@@ -361,7 +361,8 @@
 
             if (chunk.Properties != null)
             {
-                if (chunk.Properties.LODLevel >= LodColliderStart && chunk.IsVisible)
+                if (chunk.Properties.LODLevel >= LodColliderStart &&
+                    (chunk.IsVisible || GenerateCollidersForInvisible))
                 {
                     chunk.Collider.sharedMesh = null;
                     chunk.Collider.sharedMesh = chunk.Filter.sharedMesh;
@@ -705,6 +706,8 @@
 
         public void DisableChunk(PlanetChunkProperties chunk)
         {
+            Debug.Assert(chunk.ChunkObject, "ChunkObject is null");
+
             if (chunk.ChunkObject.Collider != null)
                 chunk.ChunkObject.Collider.enabled = false;
 

@@ -36,7 +36,7 @@ public class PlanetChunkObject : MonoBehaviour
     {
         //only show renderer and rad data if the chunk is visible.
         //GPU readback might have happened too late and chuck might have been made invisible by that time.
-        if (IsVisible)
+        if (IsVisible && Filter)
         {
             var vectorData = request.GetData<Vector3>();
             Filter.sharedMesh.SetVertices(vectorData);
@@ -52,7 +52,7 @@ public class PlanetChunkObject : MonoBehaviour
     public void ApplyNormalData(AsyncGPUReadbackRequest request)
     {
         //GPU readback might have happened too late and chuck might have been made invisible by that time.
-        if (IsVisible)
+        if (IsVisible && Filter)
         {
             var vectorData = request.GetData<Vector3>();
             Filter.sharedMesh.SetNormals(vectorData);
