@@ -39,7 +39,7 @@ public class PlanetChunkObject : MonoBehaviour
         if (IsVisible)
         {
             var vectorData = request.GetData<Vector3>();
-            Filter.sharedMesh.vertices = vectorData.ToArray();
+            Filter.sharedMesh.SetVertices(vectorData);
             Filter.sharedMesh.RecalculateBounds();
             Renderer.enabled = true;
             IsCalculating = false;
@@ -52,7 +52,7 @@ public class PlanetChunkObject : MonoBehaviour
         if (IsVisible)
         {
             var vectorData = request.GetData<Vector3>();
-            Filter.sharedMesh.normals = vectorData.ToArray();
+            Filter.sharedMesh.SetNormals(vectorData);
         }
     }
 }
