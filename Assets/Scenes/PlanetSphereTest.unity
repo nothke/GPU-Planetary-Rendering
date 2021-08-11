@@ -732,7 +732,8 @@ MonoBehaviour:
   TerrainBumpScale: 1
   MainCamera: {fileID: 1646154915}
   MaxLodLevel: 11
-  LodColliderStart: 11
+  LodColliderStart: 6
+  GenerateCollidersForInvisible: 0
   MaxError: 82
   MaxSplitsPerSecond: 120
   PoolStartPopulation: 0
@@ -836,6 +837,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   prefab: {fileID: 546039736}
+  speed: 30
 --- !u!114 &1979583049
 MonoBehaviour:
   m_ObjectHideFlags: 0

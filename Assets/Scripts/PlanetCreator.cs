@@ -20,6 +20,7 @@
         private List<PlanetChunkProperties> rootChunks; //chunk array
         public int MaxLodLevel = 7; //max lod division level
         public int LodColliderStart = 5; //what level to start collision generation
+        public bool GenerateCollidersForInvisible = false;
         public float MaxError = 1; //max lod error
         public float MaxSplitsPerSecond = 20;
 
@@ -360,7 +361,7 @@
 
             if (chunk.Properties != null)
             {
-                if (chunk.Properties.LODLevel >= LodColliderStart)
+                if (chunk.Properties.LODLevel >= LodColliderStart && chunk.IsVisible)
                 {
                     chunk.Collider.sharedMesh = null;
                     chunk.Collider.sharedMesh = chunk.Filter.sharedMesh;
