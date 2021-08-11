@@ -171,7 +171,7 @@ public class ImprovedPerlinNoise
 		
 	}
 	
-	static float[] GRADIENT2 = new float[] 
+	float[] GRADIENT2 = new float[] 
 	{ 
     	0, 1, 
 		1, 1,
@@ -183,7 +183,7 @@ public class ImprovedPerlinNoise
 		-1, 1,
 	};
 	
-	static float[] GRADIENT3 = new float[] 
+	float[] GRADIENT3 = new float[] 
 	{
 	    1,1,0,
 	    -1,1,0,
@@ -203,7 +203,7 @@ public class ImprovedPerlinNoise
 	    0,-1,-1,
 	};
 	
-	static float[] GRADIENT4 = new float[]
+	float[] GRADIENT4 = new float[]
 	{
 		0, -1, -1, -1,
 		0, -1, -1, 1,
