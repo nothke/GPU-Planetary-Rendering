@@ -43,6 +43,9 @@ public class PlanetChunkObject : MonoBehaviour
             Filter.sharedMesh.RecalculateBounds();
             Renderer.enabled = true;
             IsCalculating = false;
+
+            // Must reset the mesh for the collider to update
+            Collider.sharedMesh = Filter.sharedMesh;
         }
     }
 
