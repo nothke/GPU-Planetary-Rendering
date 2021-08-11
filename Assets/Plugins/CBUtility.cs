@@ -36,7 +36,7 @@ static public class CBUtility
 		string D = "2D";
 		string C = "C" + channels.ToString();
 		
-		if(tex.isVolume)
+		if(tex.dimension == UnityEngine.Rendering.TextureDimension.Tex3D)
 		{
 			depth = tex.volumeDepth;
 			D = "3D";
@@ -100,7 +100,7 @@ static public class CBUtility
 		string D = "2D";
 		string C = "C" + channels.ToString();
 		
-		if(tex.isVolume)
+		if(tex.dimension == UnityEngine.Rendering.TextureDimension.Tex3D)
 		{
 			depth = tex.volumeDepth;
 			D = "3D";
@@ -163,7 +163,7 @@ static public class CBUtility
 		string D = "2D";
 		string C = "C" + channels.ToString();
 		
-		if(tex.isVolume)
+		if(tex.dimension == UnityEngine.Rendering.TextureDimension.Tex3D)
 		{
 			depth = tex.volumeDepth;
 			D = "3D";
@@ -233,7 +233,7 @@ static public class CBUtility
 		string D = "2D";
 		string C = "C" + channels.ToString();
 
-		if (tex.isVolume)
+		if (tex.dimension == UnityEngine.Rendering.TextureDimension.Tex3D)
 		{
 			depth = tex.volumeDepth;
 			D = "3D";

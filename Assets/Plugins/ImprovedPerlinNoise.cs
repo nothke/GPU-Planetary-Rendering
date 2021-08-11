@@ -15,7 +15,9 @@ public class ImprovedPerlinNoise
 
 	public ImprovedPerlinNoise(int seed)
 	{
-		UnityEngine.Random.seed = seed;
+		var randState = Random.state;
+
+		Random.InitState(seed);
 
 		int i, j, k;
 		for (i = 0 ; i < SIZE ; i++) 
@@ -35,7 +37,8 @@ public class ImprovedPerlinNoise
 		{
 			m_perm[SIZE + i] = m_perm[i];
 		}
-				
+
+		Random.state = randState;
 	}
 	
 	public void LoadResourcesFor2DNoise()
