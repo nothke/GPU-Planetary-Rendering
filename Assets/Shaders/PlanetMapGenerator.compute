@@ -18,34 +18,44 @@ float _BlendAmount;
 [numthreads(1,1,1)]
 void Perlin (uint3 id : SV_DispatchThreadID)
 {
-	float f = (fBm(float3(id.x * _Scale,id.y * _Scale,_Time),ceil(_Octaves)) + 1) / 2;
-    Output[id.xy] = float4(f,f,f,1);
+	Output[id.xy] = 0;
+
+	//float f = (fBm(float3(id.x * _Scale,id.y * _Scale,_Time),ceil(_Octaves)) + 1) / 2;
+    //Output[id.xy] = float4(f,f,f,1);
 }
 
 [numthreads(1,1,1)]
 void Turbulence (uint3 id : SV_DispatchThreadID)
 {
-	float f = turbulence(float3(id.x * _Scale,id.y * _Scale,_Time),ceil(_Octaves));
-    Output[id.xy] = float4(f,f,f,1);
+	Output[id.xy] = 0;
+
+	//float f = turbulence(float3(id.x * _Scale,id.y * _Scale,_Time),ceil(_Octaves));
+    //Output[id.xy] = float4(f,f,f,1);
 }
 
 [numthreads(1,1,1)]
 void Ridged (uint3 id : SV_DispatchThreadID)
 {
-	float f = ridgedmf(float3(id.x * _Scale,id.y * _Scale,_Time),ceil(_Octaves),_Offset);
-    Output[id.xy] = float4(f,f,f,1);
+	Output[id.xy] = 0;
+
+	//float f = ridgedmf(float3(id.x * _Scale,id.y * _Scale,_Time),ceil(_Octaves),_Offset);
+    //Output[id.xy] = float4(f,f,f,1);
 }
 
 [numthreads(1,1,1)]
 void Add (uint3 id : SV_DispatchThreadID)
 {
-	float4 f = Input1[id.xy] + Input2[id.xy] * _BlendAmount;
-    Output[id.xy] = f;
+	Output[id.xy] = 0;
+
+	//float4 f = Input1[id.xy] + Input2[id.xy] * _BlendAmount;
+    //Output[id.xy] = f;
 }
 
 [numthreads(1,1,1)]
 void Multiply (uint3 id : SV_DispatchThreadID)
 {
-	float4 f = Input1[id.xy] * Input2[id.xy] * _BlendAmount;
-    Output[id.xy] = f;
+	Output[id.xy] = 0;
+
+	//float4 f = Input1[id.xy] * Input2[id.xy] * _BlendAmount;
+    //Output[id.xy] = f;
 }

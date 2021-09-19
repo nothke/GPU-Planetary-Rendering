@@ -41,14 +41,15 @@ public class AtmosphericScatter : MonoBehaviour
 	public RenderTexture m_inscatter;
 	public RenderTexture m_irradiance;
 	public Material m_atmosphereImageEffect;
-	void Start()
-	{
+
+    private void OnEnable()
+    {
 		Application.runInBackground = false;
 		lightingBuffer = new CommandBuffer();
 		camera = GetComponent<Camera>();
 		camera.AddCommandBuffer(CameraEvent.BeforeLighting, lightingBuffer);
 		camera.depthTextureMode = DepthTextureMode.DepthNormals;
-        //m_skyMap.format = RenderTextureFormat.ARGBHalf; //must be floating point format
+		//m_skyMap.format = RenderTextureFormat.ARGBHalf; //must be floating point format
 
 		CreateTextures();
 		CopyDataToTextures();
@@ -56,7 +57,7 @@ public class AtmosphericScatter : MonoBehaviour
 		UpdateMaterialTextures(m_atmosphereImageEffect);
 	}
 
-	private void CreateTextures()
+    private void CreateTextures()
 	{
 		m_transmittance = new RenderTexture(TRANSMITTANCE_WIDTH, TRANSMITTANCE_HEIGHT, 0, RenderTextureFormat.ARGBHalf)
 		{
@@ -178,10 +179,12 @@ public class AtmosphericScatter : MonoBehaviour
         mat.SetVector("SUN_DIR", m_sun.transform.forward * -1.0f);
     }
 
-    void OnDestroy()
+    void OnDisable()
     {
 		if(m_transmittance) m_irradiance.Release();
         if(m_transmittance) m_transmittance.Release();
         if(m_inscatter) m_inscatter.Release();
+
+		camera.RemoveCommandBuffer(CameraEvent.BeforeLighting, lightingBuffer);
     }
 }

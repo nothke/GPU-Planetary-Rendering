@@ -327,7 +327,6 @@ float3 GetReflectedLight(float3 surfacePos,float depth,float3 attenuation,float 
 
 		float3 groundColor = surfaceColor * (max(musSurfacePos, 0)*sunLight + groundSkyLight) * lightIntensity / M_PI;
 
-		//return attenuation;
 		return attenuation * groundColor;
 	}
 	else

@@ -71,6 +71,7 @@ Shader "Sky/AtmosphereImageEffect"
 				
 				
 				float4 surfaceColor = tex2D (_MainTex, i.uv);
+				//float4 surfaceColor = 0;
 			    float3 viewDir = normalize(wpos-_WorldSpaceCameraPos.xyz);
 
 				float3 attenuation;
@@ -78,8 +79,22 @@ Shader "Sky/AtmosphereImageEffect"
 				float3 inscat = GetInscatteredLight(wpos,viewDir,attenuation,irradianceFactor);
 				float3 reflected = GetReflectedLight(wpos, depth,attenuation,irradianceFactor, normal,surfaceColor);
 
+				//reflected = saturate(reflected);
+				//inscat = saturate(inscat);
+
+				//return 1;
+				//return length(attenuation);
+
 				//return float4(reflected, 1);
-				return float4(inscat + reflected,1);
+
+				float3 tot = inscat + reflected;
+				//tot = saturate(tot);
+
+				//if (isnan(tot.r))
+					//tot = 0;
+
+				//return float4(reflected, 1);
+				return float4(tot,1);
 			}
 			ENDCG
 	    }

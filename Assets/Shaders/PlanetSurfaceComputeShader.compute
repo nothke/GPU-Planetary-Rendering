@@ -28,4 +28,7 @@ void CSMain (uint3 id : SV_DispatchThreadID)
 
 	normalBuffer[id.x] = normalize(normalize(vertex)-dF);
 	vertexBuffer[id.x] = Pos;
+
+	//normalBuffer[id.x] = normalize(vertex);
+	//vertexBuffer[id.x] = vertex;
 }
